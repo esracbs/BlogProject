@@ -1,8 +1,8 @@
 ﻿
 <div class="tech-btm">
-    <h4>Mail Bülteni</h4>
+    
     <p>Tüm bloglarımızdan haberdar olun </p>
-    <form action ="/NewsLetter/SubscribeMail/"method="post">
+    <form asp-controller="NewsLetter" asp-action="SubscribeMail" method="post">
         <input type="email" placeholder="Email" required="" name="Mail">
         <input type="submit" value="Subscribe">
     </form>

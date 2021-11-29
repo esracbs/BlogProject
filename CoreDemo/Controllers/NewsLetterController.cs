@@ -12,6 +12,7 @@ namespace CoreDemo.Controllers
     public class NewsLetterController : Controller
     {
         NewsLetterManager nm = new NewsLetterManager(new EfNewsLetterRepository());
+        [HttpGet]
         public PartialViewResult SubscribeMail()
         {
             return PartialView();
