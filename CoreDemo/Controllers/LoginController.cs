@@ -28,14 +28,14 @@ namespace CoreDemo.Controllers
                 x.WriterPassword==p.WriterPassword);
             if (datavalue!=null)
             {
-                var claims = new List<Claim>
+                var claims = new List<Claim>//claim talep demek
                 {
                     new Claim(ClaimTypes.Name,p.WriterMail)
                 };
                 var useridentity = new ClaimsIdentity(claims, "a");
                 ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
                 await HttpContext.SignInAsync(principal);
-                return RedirectToAction("Index", "Writer");
+                return RedirectToAction("Index", "Writer");//bizi writerdaki indexe yönlendir
             }
             else
             {
@@ -45,15 +45,4 @@ namespace CoreDemo.Controllers
     }
 }
 
-//Context c = new Context();
-//var datavalue = c.Writers.FirstOrDefault(x => x.WriterMail == p.WriterMail &&
-//  x.WriterPassword == p.WriterPassword);
-//if (datavalue != null)
-//{
-//    HttpContext.Session.SetString("username", p.WriterMail);
-//    return RedirectToAction("Index", "Writer");
-//}
-//else
-//{
-//    return View();
-//}
+
