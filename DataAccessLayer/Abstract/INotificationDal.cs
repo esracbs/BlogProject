@@ -2,13 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.Abstract
+namespace DataAccessLayer.Abstract
 {
-    public interface IWriterService:IGenericService<Writer>
+    public interface INotificationDal:IGenericDal<Notification>
     {
-        List<Writer> GetWriterById(int id);
     }
 }
