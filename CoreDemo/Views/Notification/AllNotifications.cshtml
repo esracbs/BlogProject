@@ -1,0 +1,25 @@
+﻿@using EntityLayer.Concrete
+@model List<Notification>
+
+@{
+    ViewData["Title"] = "AllNotifications";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<h1>Bildirimler</h1>
+<table class="table tbale table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Bildirim</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        string sonuc = (DateTime.Now - item.NotificationDate).Days.ToString();
+        <tr>
+            <td>@item.NotificationID</td>
+            <td>@item.NotificationDetails</td>
+            <td>@sonuc gün önce</td>
+        </tr>
+    }
+</table>
+
