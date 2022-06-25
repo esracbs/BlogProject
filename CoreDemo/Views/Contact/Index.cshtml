@@ -87,7 +87,8 @@
                         <div class="col-md-6 con-right">
                             <div class="form-group">
                                 <label for="textarea">Mesajınız</label>
-                                <textarea id="textarea" name="ContactMesssage"></textarea>
+                                <textarea id="textarea" name="ConactMesssage"></textarea>
+                                @Html.ValidationMessage("ContactMesssage", "", new { @class = "text-danger" })
                             </div>
                             <input class="form-control" type="submit" value="Gönder">
 
