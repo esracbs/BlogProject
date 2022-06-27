@@ -16,9 +16,15 @@ namespace CoreDemo.Controllers
         CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
         public IActionResult Index()
         {
-            ViewBag.ToplamBlogSayisi = blogManager.GetList().Count();
-            ViewBag.YazarinBlogSayisi = blogManager.GetBlogListByWriter(1).Count();
-            ViewBag.KategoriSayisi = categoryManager.GetList().Count();
+            Context c = new Context();
+            var username = User.Identity.Name;
+            var usermail = c.Users.Where(x => x.UserName == username).
+                Select(y => y.Email).FirstOrDefault();
+            var writerid = c.Writers.Where(x => x.WriterMail == usermail).Select
+                (y => y.WriterID).FirstOrDefault();
+            ViewBag.v1 = c.Blogs.Count().ToString();
+            ViewBag.v2 = c.Blogs.Where(x => x.WriterID == writerid).Count();
+            ViewBag.v3 = c.Categories.Count();
             return View();
         }
     }
