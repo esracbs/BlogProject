@@ -53,6 +53,12 @@ namespace CoreDemo
                 {
                     x.LoginPath = "/Login/Index";
                 });
+            services.ConfigureApplicationCookie(opts=> { opts.Cookie.HttpOnly = true;
+                opts.ExpireTimeSpan = TimeSpan.FromMinutes(100);
+                opts.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Login/AccesDenied/");
+                opts.LoginPath = "/Login/Index/";
+                opts.SlidingExpiration = true;
+            });
             
         }
 
