@@ -1,6 +1,7 @@
 ﻿using CoreDemo.Areas.Admin.Models;
 using CoreDemo.Models;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 namespace CoreDemo.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles="Admin,Moderator")]//admin veya moderatörlere erişim yetkisi verdik
     public class AdminRoleController : Controller
     {
         private readonly RoleManager<AppRole> _roleManager;
